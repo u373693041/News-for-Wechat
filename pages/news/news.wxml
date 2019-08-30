@@ -1,0 +1,20 @@
+<import src="post-item/post-item-template.wxml" />
+<view>
+  <swiper indicator-dots="true" autoplay="true" circular="true">
+    <swiper-item>
+      <view style="background-image:url({{postList[6].imgSrc}})" class="swiperImage" data-postId="6"><text class="swiperText">{{postList[6].title}}</text></view>
+    </swiper-item>
+    <swiper-item class="image2">
+      <view style="background-image:url({{postList[7].imgSrc}})" class="swiperImage" data-postId="7"><text class="swiperText">{{postList[7].title}}</text></view>
+    </swiper-item>
+    <swiper-item class="image3">
+      <view style="background-image:url({{postList[8].imgSrc}})" class="swiperImage" data-postId="8"><text class="swiperText">{{postList[8].title}}</text></view>
+    </swiper-item>
+  </swiper>
+  <block wx:for="{{postList}}" wx:for-item="item" wx:for-index="idx">
+     <view catchtap="onPostTap" data-postId="{{item.postId}}">
+       <!--...是把对象平铺出来，传入就不是对象，是对象的内容-->
+        <template is="postItem" data="{{...item}}"/>
+     </view>
+  </block>
+</view>
